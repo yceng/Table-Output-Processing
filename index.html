@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Index#</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <h3>Table 1</h3>
+    <br>
+
+    
+    <table id="table2">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="table2Data"></tbody>
+    </table>
+    <h3>Table 2</h3>
+    
+    <script>
+        
+        const data = {
+            Index: ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20"],
+            Value: [41, 18, 21, 63, 2, 53, 5, 57, 60, 93, 28, 3, 90, 39, 80, 88, 49, 60, 26, 28]
+        };
+
+        const table2Data = [
+            { category: 'Alpha', value: data.Value[4] + data.Value[19] },
+            { category: 'Beta', value: data.Value[14] / data.Value[6] },
+            { category: 'Charlie', value: data.Value[12] * data.Value[11] },
+        ];
+
+        
+        const table = document.getElementById('table');
+        const table2 = document.getElementById('table2');
+
+        
+        for (let i = 0; i < data.Index.length; i++) {
+            const row = document.createElement('tr');
+            const index = document.createElement('td');
+            const valueT1 = document.createElement('td');
+
+            index.textContent = data.Index[i];
+            valueT1.textContent = data.Value[i];
+            valueT1.style.textAlign = 'right'; 
+
+            row.appendChild(index);
+            row.appendChild(valueT1);
+            table.appendChild(row);
+        };
+
+        
+        table2Data.forEach(item => {
+            const row = document.createElement('tr');
+            const category = document.createElement('td');
+            const valueT2 = document.createElement('td');
+
+            category.textContent = item.category;
+            valueT2.textContent = item.value;
+            category.style.textAlign = 'center';
+            valueT2.style.textAlign = 'center';
+
+            row.appendChild(category);
+            row.appendChild(valueT2);
+            table2.appendChild(row);
+        });
+
+    </script>
+</body>
+</html>
